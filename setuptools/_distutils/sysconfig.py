@@ -252,6 +252,9 @@ def customize_compiler(compiler):
             linker_exe=cc,
             archiver=archiver)
 
+        if 'RANLIB' in os.environ and 'ranlib' in compiler.executables:
+            compiler.set_executables(ranlib=os.environ['RANLIB'])
+
         compiler.shared_lib_extension = shlib_suffix
 
 
